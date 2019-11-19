@@ -7,10 +7,8 @@ branches: # build only on these branches
   only:
     - master
 
-env:
-  global:
-    - PROJECT_NAME=sillyhatxu/learning-badges
-    - TAG=1.0
+script:
+  - ./env.sh
 
 jobs:
   include:
