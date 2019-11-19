@@ -3,24 +3,17 @@ language: go
 go:
   - 1.13.x
 
-env:
-  - PROJECT_NAME=sillyhatxu/learning-badges
-  - TAG=1.0
-
 branches: # build only on these branches
   only:
     - master
-
-#script:
-#  - ./env.sh
 
 jobs:
   include:
     - stage: build docker image
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker build -t "$PROJECT_NAME" .
-        - docker tag "$PROJECT_NAME":latest "$PROJECT_NAME":"$TAG"
+        - docker build -t sillyhatxu/learning-badges .
+        - docker tag sillyhatxu/learning-badges:latest sillyhatxu/learning-badges:1.0
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
