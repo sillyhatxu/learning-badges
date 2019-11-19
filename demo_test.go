@@ -5,6 +5,21 @@ import (
 	"testing"
 )
 
+import (
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
+)
+
+var _ = Describe("Example", func() {
+	Describe("Make an awesome expression", func() {
+		Context("smile", func() {
+			It("should result :)", func() {
+				Expect(Print1()).To(Equal(expected))
+			})
+		})
+	})
+})
+
 const expected = "hello world"
 
 func TestPrint1(t *testing.T) {
