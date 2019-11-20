@@ -7,21 +7,24 @@ branches: # build only on these branches
   only:
     - master
 
-jobs:
-  include:
-    - stage: docker login
-      script:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - stage: build docker image
-      script:
-        - docker build -t sillyhatxu/learning-badges .
-        - docker tag sillyhatxu/learning-badges:latest sillyhatxu/learning-badges:1.0
+#jobs:
+#  include:
+#    - stage: docker login
+#      script:
+#        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#    - stage: build docker image
+#      script:
+#        - docker build -t sillyhatxu/learning-badges .
+#        - docker tag sillyhatxu/learning-badges:latest sillyhatxu/learning-badges:1.0
 
 #before_install:
 #  - go get -t -v ./...
 
 script:
-  - go test -race -coverprofile=coverage.txt -covermode=atomic
+  - ./go.test.sh
+
+#script:
+#  - go test -race -coverprofile=coverage.txt -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
