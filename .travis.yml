@@ -21,7 +21,7 @@ branches: # build only on these branches
 #  - go get -t -v ./...
 
 script:
-  - ./go.test.sh
+  - ./coverage.sh
 
 #script:
 #  - go test -race -coverprofile=coverage.txt -covermode=atomic
