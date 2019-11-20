@@ -3,11 +3,12 @@ language: go
 go:
   - 1.13.x
 
-sudo: true
-
 branches: # build only on these branches
   only:
     - master
+
+before_install:
+  - chmod +x coverage.sh
 
 #jobs:
 #  include:
